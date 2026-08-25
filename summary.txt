@@ -1,0 +1,28 @@
+## Day 1 Task: Local Gitea Setup (No Docker)
+
+### Summary
+Cloned go-gitea/gitea and got it building and running locally from source, without Docker.
+
+### Environment
+- OS: Ubuntu (EC2, 1.9GB RAM)
+- Go: 1.27.0 (installed manually — apt only offered 1.26)
+- Node: 22.23.2 (via official install, met the >=22.18.0 requirement)
+- pnpm: 11.22.0 (via corepack, pinned version from package.json)
+
+### Steps taken
+1. Cloned the repository
+2. Checked `go.mod` for required Go version (1.27) and installed it manually from go.dev since apt's version was outdated
+3. Installed Node.js 22.23.2 and pnpm 11.22.0 (via corepack) per `package.json` requirements
+4. Ran `make deps` — frontend deps installed fine, but backend dev-tool install (golangci-lint, air, swagger, etc.) got OOM-killed due to limited RAM
+5. Added 2GB swap to the instance to resolve the memory issue
+6. Ran `make backend` then `make build` to compile the binary
+7. Ran `./gitea web` and completed the install wizard (SQLite) via browser (SSH tunnel to localhost:3000)
+8. Verified: logged in as admin, created a test repository, confirmed push/pull worked
+
+### Issues encountered
+- **Go version mismatch**: apt's golang-go package was 1.26, repo requires 1.27 — resolved by installing Go directly from go.dev
+- **Missing pnpm**: not installed by default — resolved via `corepack prepare pnpm@11.22.0 --activate`
+- **OOM kill during `make deps`**: compiling multiple Go lint/dev tools in parallel exceeded available RAM (1.9GB, no swap) — resolved by adding a 2GB swapfile
+
+### What this PR contains
+Setup notes / environment documentation for the local dev workflow (no functional code changes).
