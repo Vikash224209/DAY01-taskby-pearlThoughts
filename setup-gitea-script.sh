@@ -1,6 +1,6 @@
 #!/bin/bash
 
-<<help
+<<'help'
 Script to build and run Gitea locally without using docker.
 
 Author: Vikash Yadav
@@ -51,15 +51,15 @@ echo "All required tools are installed"
 echo "Step 3: Showing installed version...."
 
 echo "Go version:"
-go version
+go --version
 echo "make version:"
-make version
+make --version
 echo "pnpm version:"
-pnpm version
+pnpm --version
 echo "node version:"
-node version
+node --version
 echo "git version:"
-git version
+git --version
 
 
 echo "Step 4 : Building Gitea from source. This may take a few minutes..."
