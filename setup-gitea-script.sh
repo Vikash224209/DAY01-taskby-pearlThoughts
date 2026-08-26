@@ -1,6 +1,6 @@
 #!/bin/bash
 
-<<'help'
+:<<'help'
 Script to build and run Gitea locally without using docker.
 
 Author: Vikash Yadav
