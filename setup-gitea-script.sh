@@ -1,11 +1,9 @@
 #!/bin/bash
 
-:<<'help'
-Script to build and run Gitea locally without using docker.
 
-Author: Vikash Yadav
+#Script to build and run Gitea locally without using docker.
 
-help
+#Author: Vikash Yadav
 
 echo "========== Gitea Local Setup Automation Start =========="
 
