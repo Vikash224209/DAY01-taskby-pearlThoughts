@@ -25,4 +25,4 @@ Cloned go-gitea/gitea and got it building and running locally from source, witho
 - **OOM kill during `make deps`**: compiling multiple Go lint/dev tools in parallel exceeded available RAM (1.9GB, no swap) — resolved by adding a 2GB swapfile
 
 ### What this PR contains
-Setup notes / environment documentation for the local dev workflow (no functional code changes).
+Setup notes / environment documentation for the local dev workflow (no functional code changes). hhh
